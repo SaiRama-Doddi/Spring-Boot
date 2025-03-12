@@ -47,7 +47,9 @@ public class demoSecurityRoles {
                                 .loginPage("/showMyLoginPage") // Custom login page
                                 .loginProcessingUrl("/authenticateTheUser") // Processing endpoint
                                 .permitAll())
-                .logout(logout -> logout.permitAll());
+                .logout(logout -> logout.permitAll())
+                .exceptionHandling(configurer ->
+                     configurer.accessDeniedPage("/access-denied"));
 
         return http.build();
     }
