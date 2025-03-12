@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* Centering the form */
+        .login-container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        .login-box {
+            width: 450px;
+            padding: 50px;
+            border: 2px solid black; 
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container login-container">
+    <div class="login-box">
+        <h3 class="text-center mb-3">My Custom Login Page</h3>
+
+        <!-- Error Message -->
+        <div th:if="${param.error}" class="alert alert-danger text-center p-2">
+            <i class="fas fa-exclamation-circle"></i> Invalid username or password!
+        </div>
+
+        <div th:if="${param.logout}" class="alert alert-success text-center p-2">
+            <i class="fas fa-exclamation-circle"></i> You have been logged out!
+        </div>
+
+        <form action="#" method="POST" th:action="@{/authenticateTheUser}">
+            <!-- Username Field -->
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    <input type="text" class="form-control" name="username" placeholder="Enter username" required>
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter password" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-dark w-100">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS (Optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
